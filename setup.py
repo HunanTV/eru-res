@@ -22,6 +22,7 @@ INSTALL_REQUIRES = [
     'influxdb',
     'python-etcd',
     'MySQL-python',
+    'PyYAML',
 ]
 
 PACKAGES = ['resource']
