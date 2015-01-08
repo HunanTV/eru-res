@@ -25,9 +25,11 @@ def cli(ctx, name, path, env):
         ctx.exit(-1)
 
     etcd_config = tuple(map(lambda z:(z[0], int(z[1])), (x.split(":"),))[0] for x in os.getenv('ETCD').split(','))
-    out_path = OUTPATH_FORMATTER % (name, env)
+    ctx.obj['path'] = OUTPATH_FORMATTER % (name, env)
     ctx.obj['name'] = name
-    ctx.obj['etcd'], ctx.obj['influxdb'], ctx.obj['mysql'], ctx.obj['out'] = get_connections(name, path, env, etcd_config, out_path)
+    ctx.obj['etcd'], ctx.obj['influxdb'], ctx.obj['mysql'], ctx.obj['out'] = get_connections(
+            name, path, env, etcd_config, ctx.obj['path']
+    )
     logger.info('NBE Resource Tool')
 
 commands = cli.command()

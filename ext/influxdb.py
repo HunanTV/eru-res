@@ -9,8 +9,8 @@ logger = logging.getLogger(__name__)
 
 def create(influxdb, dbname, username, pass_len, out, admin):
     if out.get('influxdb'):
-        logger.warn('This out contain a influxdb section')
-        return True
+        logger.warn('This app contain a influxdb section')
+        return False
     if not influxdb.create_database(dbname):
         logger.info('Create influxdb database failed')
         return False

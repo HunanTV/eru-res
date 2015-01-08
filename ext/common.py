@@ -32,4 +32,6 @@ def random_password(l):
     return ''.join(random.sample(LETTERS, l))
 
 def save(client, out_path, out_data):
-    pass
+    data = yaml.safe_dump(out_data, default_flow_style=False)
+    client.write(out_path, data)
+
