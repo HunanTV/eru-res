@@ -25,7 +25,7 @@ INSTALL_REQUIRES = [
     'PyYAML',
 ]
 
-PACKAGES = ['resource']
+PACKAGES = ['resource', 'ext',]
 
 here = os.path.abspath(os.path.dirname(__file__))
 
