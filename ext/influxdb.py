@@ -20,7 +20,7 @@ def create(influxdb, dbname, username, pass_len, out, admin):
         logger.info('Create influxdb username failed')
         return False
     #TODO because influxdb's bug, here we should set password again
-    influxdb.update_database_user_password(username, password)
+    #influxdb.update_database_user_password(username, password)
     if admin and not influxdb.set_database_admin(username):
         logger.info('Set username as admin failed')
         return False
