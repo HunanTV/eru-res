@@ -8,7 +8,7 @@ import click
 import logging
 
 from ext.common import get_connections
-from resource.influxdb import create_influxdb
+from resource.influxdb import add_influxdb
 
 logger = logging.getLogger(__name__)
 
@@ -25,15 +25,15 @@ def cli(ctx, name, path, env):
         ctx.exit(-1)
 
     etcd_config = tuple(map(lambda z:(z[0], int(z[1])), (x.split(":"),))[0] for x in os.getenv('ETCD').split(','))
-    ctx.obj['path'] = OUTPATH_FORMATTER % (name, env)
-    ctx.obj['name'] = name
-    ctx.obj['etcd'], ctx.obj['influxdb'], ctx.obj['mysql'], ctx.obj['out'] = get_connections(
-            name, path, env, etcd_config, ctx.obj['path']
-    )
+    ctx.obj['app_config_path'] = OUTPATH_FORMATTER % (name, env)
+    ctx.obj['app_name'] = name
+    ctx.obj['etcd'], ctx.obj['influxdb'], ctx.obj['mysql'] = get_connections(path, etcd_config)
     logger.info('NBE Resource Tool')
 
+
 commands = cli.command()
-commands(create_influxdb)
+commands(add_influxdb)
+
 
 def main():
     logging.basicConfig(level=logging.INFO)
