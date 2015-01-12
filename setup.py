@@ -23,6 +23,7 @@ INSTALL_REQUIRES = [
     'python-etcd',
     'MySQL-python',
     'PyYAML',
+    'requests',
 ]
 
 PACKAGES = ['resource', 'ext',]

@@ -16,12 +16,12 @@ logger = logging.getLogger(__name__)
 
 LETTERS = string.ascii_letters + string.digits
 
-def get_connections(path, etcd_config):
+def get_root_config(path, etcd_config):
     client = etcd.Client(host=etcd_config, allow_reconnect=True)
     root = yaml.load(client.read(path).value)
     influxdb = InfluxDBClient(**root['influxdb'])
     mysql = connect(**root['mysql'])
-    return client, influxdb, mysql
+    return root, client, influxdb, mysql
 
 
 def random_password(l):
