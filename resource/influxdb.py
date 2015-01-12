@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 def add_influxdb(ctx, length, admin):
     etcd, influxdb, app_config_path = ctx.obj['etcd'], ctx.obj['influxdb'], ctx.obj['app_config_path']
     try:
-        config = yaml.load(etcd.read(app_config_path).value)
+        config = yaml.load(etcd.read(app_config_path).value) or {}
     except:
         logger.info('app %s config not exist' % ctx.obj['app_name'])
         ctx.exit(-1)
