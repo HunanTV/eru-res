@@ -33,7 +33,8 @@ here = os.path.abspath(os.path.dirname(__file__))
 def read_long_description(filename):
     path = os.path.join(here, filename)
     if os.path.exists(path):
-        return open(path).read()
+        with open(path, 'r') as f:
+            return f.read()
     return ""
 
 setup(
