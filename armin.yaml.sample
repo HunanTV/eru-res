@@ -1,0 +1,4 @@
+etcd:
+    - localhost:4001
+    - localhost:4002
+    - localhost:4003

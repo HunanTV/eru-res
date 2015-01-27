@@ -1,5 +1,4 @@
-#!/usr/bin/python
-#coding:utf-8
+# coding:utf-8
 
 from __future__ import absolute_import
 
@@ -9,19 +8,43 @@ import time
 import string
 import random
 import logging
-from MySQLdb import connect
-from influxdb import InfluxDBClient
+import MySQLdb
+import influxdb
 
 logger = logging.getLogger(__name__)
 
 LETTERS = string.ascii_letters + string.digits
+APP_CONFIG_PATH_FORMATTER = '/NBE/{appname}/resource-prod'
+
+
+def load_etcd_config(path):
+    config = {}
+    with open(path, 'r') as f:
+        config = yaml.load(f)
+    etcds = config.get('etcd', [])
+
+    def _translate(h):
+        host, port = h.split(':')
+        return host, int(port)
+
+    return tuple(_translate(etcd) for etcd in etcds)
+
+
+def get_etcd_client(etcd_config):
+    return etcd.Client(host=etcd_config, allow_reconnect=True)
+
+
+def get_influxdb_client(**kw):
+    return influxdb.InfluxDBClient(**kw)
+
+
+def get_mysql_client(**kw):
+    return MySQLdb.connect(**kw)
+
 
 def get_root_config(path, etcd_config):
-    client = etcd.Client(host=etcd_config, allow_reconnect=True)
-    root = yaml.load(client.read(path).value)
-    influxdb = InfluxDBClient(**root['influxdb'])
-    mysql = connect(**root['mysql'])
-    return root, client, influxdb, mysql
+    etcd_client = get_etcd_client(etcd_config)
+    return yaml.load(etcd_client.read(path).value)
 
 
 def random_password(l):
