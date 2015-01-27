@@ -2,13 +2,17 @@
 
 import logging
 
+from utils.helper import scp_file
+from ext.common import random_password
+
 
 logger = logging.getLogger(__name__)
 
-def reload_nginx(sshs):
-    # (stdout, stderr, exit_code)
-    rs = [ssh.execute('nginx -s reload', sudo=True) for ssh in sshs]
-    for _, stderr, exit_code in rs:
-        if exit_code:
-            logger.error('\n'.join(stderr.readlines()))
+def reload_nginx(sshs, local_path, remote_path):
+    for ssh in sshs:
+        file_name = local_path.rsplit('/')[-1]
+        tmp_path = '/tmp/%s.tmp.%s' % (file_name, random_password(4))
+        scp_file(ssh, local_path, tmp_path)
+        ssh.execute('cp %s %s' % (tmp_path, remote_path), sudo=True)
+        ssh.execute('nginx -s reload', sudo=True)
 
