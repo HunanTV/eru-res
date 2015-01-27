@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #coding:utf-8
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 
 # package meta info
 NAME = "resource"
@@ -26,8 +26,6 @@ INSTALL_REQUIRES = [
     'requests',
 ]
 
-PACKAGES = ['resource', 'ext',]
-
 here = os.path.abspath(os.path.dirname(__file__))
 
 def read_long_description(filename):
@@ -47,7 +45,7 @@ setup(
     license=LICENSE,
     url=URL,
     keywords=KEYWORDS,
-    packages=PACKAGES,
+    packages=find_packages(),
     zip_safe=False,
     entry_points=ENTRY_POINTS,
     install_requires=INSTALL_REQUIRES,
