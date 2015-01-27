@@ -24,6 +24,7 @@ INSTALL_REQUIRES = [
     'MySQL-python',
     'PyYAML',
     'requests',
+    'paramiko',
 ]
 
 here = os.path.abspath(os.path.dirname(__file__))
