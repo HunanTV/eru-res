@@ -27,7 +27,12 @@ Options are:
     
 #### Nginx Reload:
 
-    $ res nginx_reload --nginx-list nginx.sample --key-file armin.pub --user armin
+    $ res nginx_reload /tmp/marco.conf /etc/nginx/conf.d/marco.conf --nginx-list nginx.sample --key-file armin.pub --user armin
+
+Arguments are:
+
+* `local_path`: local nginx conf path 
+* `remote_path`: remote nginx conf path, e.g. /etc/nginx/conf.d/marco.conf
 
 Options are:
 
