@@ -16,3 +16,9 @@ def reload_nginx(sshs, local_path, remote_path):
         ssh.execute('cp %s %s' % (tmp_path, remote_path), sudo=True)
         ssh.execute('nginx -s reload', sudo=True)
 
+
+def clean_nginx(sshs, remote_path):
+    for ssh in sshs:
+        ssh.execute('rm %s' % remote_path, sudo=True)
+        ssh.execute('nginx -s reload', sudo=True)
+

@@ -40,6 +40,20 @@ Options are:
 * `--key-file`, `-k`: SSH public key
 * `--user`, `-u`: user to login
 
+#### Nginx Clean:
+
+    $ res nginx_clean /etc/nginx/conf.d/marco.conf --nginx-list nginx.sample --key-file armin.pub --user armin
+
+Arguments are:
+
+* `remote_path`: remote nginx conf path, e.g. /etc/nginx/conf.d/marco.conf
+
+Options are:
+
+* `--nginx-list`, `-l`: file that contains nginx server list
+* `--key-file`, `-k`: SSH public key
+* `--user`, `-u`: user to login
+
 #### Command Options are:
 
 * `--config-path`: path for root config in etcd, which stores mysql/influxdb/sentry key information 

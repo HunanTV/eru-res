@@ -10,7 +10,7 @@ from ext.common import load_etcd_config, get_root_config
 
 from resource.influxdb import add_influxdb
 from resource.sentry import add_sentry
-from resource.nginx import nginx_reload
+from resource.nginx import nginx_reload, nginx_clean
 
 logger = logging.getLogger(__name__)
 
@@ -34,6 +34,7 @@ commands = cli.command()
 commands(add_influxdb)
 commands(add_sentry)
 commands(nginx_reload)
+commands(nginx_clean)
 
 
 def main():
