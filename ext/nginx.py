@@ -29,12 +29,12 @@ def update_upstream(hosts, name, upstreams):
         url = '%s/upstream/%s' % (host, name)
         r = requests.post(url, data=upstreams)
         if r.status_code != 200:
-            logger.error('Update %s failed' % url)
+            logger.error('Update %s failed, code %d' % (url, r.status_code))
 
 def delete_upstream(hosts, name):
     for host in hosts:
         url = '%s/upstream/%s' % (host, name)
         r = requests.delete(url)
         if r.status_code != 200:
-            logger.error('Update %s failed' % url)
+            logger.error('Delete %s failed, code %d' % (url, r.status_code))
 

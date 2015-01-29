@@ -17,7 +17,7 @@ def _load_nginx_hosts(path):
 
 
 def _gen_upstreams(upstreams):
-    return ';'.join('server %s' % upstream for upstream in upstreams.split(','))
+    return ';'.join('server %s' % upstream for upstream in upstreams.split(',')) + ';'
 
 
 @click.argument('local_path')
