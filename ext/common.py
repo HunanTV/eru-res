@@ -27,7 +27,7 @@ def load_etcd_config(path):
         host, port = h.split(':')
         return host, int(port)
 
-    return tuple(_translate(etcd) for etcd in etcds)
+    return tuple(_translate(e) for e in etcds)
 
 
 def get_etcd_client(etcd_config):

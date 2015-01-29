@@ -1,6 +1,7 @@
 # coding: utf-8
 
 import logging
+import requests
 
 from utils.helper import scp_file
 from ext.common import random_password
@@ -13,7 +14,7 @@ def reload_nginx(sshs, local_path, remote_path):
         file_name = local_path.rsplit('/')[-1]
         tmp_path = '/tmp/%s.tmp.%s' % (file_name, random_password(4))
         scp_file(ssh, local_path, tmp_path)
-        ssh.execute('cp %s %s' % (tmp_path, remote_path), sudo=True)
+        ssh.execute('mv %s %s' % (tmp_path, remote_path), sudo=True)
         ssh.execute('nginx -s reload', sudo=True)
 
 
@@ -21,4 +22,19 @@ def clean_nginx(sshs, remote_path):
     for ssh in sshs:
         ssh.execute('rm %s' % remote_path, sudo=True)
         ssh.execute('nginx -s reload', sudo=True)
+
+
+def update_upstream(hosts, name, upstreams):
+    for host in hosts:
+        url = '%s/upstream/%s' % (host, name)
+        r = requests.post(url, data=upstreams)
+        if r.status_code != 200:
+            logger.error('Update %s failed' % url)
+
+def delete_upstream(hosts, name):
+    for host in hosts:
+        url = '%s/upstream/%s' % (host, name)
+        r = requests.delete(url)
+        if r.status_code != 200:
+            logger.error('Update %s failed' % url)
 

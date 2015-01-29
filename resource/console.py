@@ -10,7 +10,8 @@ from ext.common import load_etcd_config, get_root_config
 
 from resource.influxdb import add_influxdb
 from resource.sentry import add_sentry
-from resource.nginx import nginx_reload, nginx_clean
+from resource.nginx import nginx_reload, nginx_clean, \
+        set_upstreams, remove_upstreams
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +36,8 @@ commands(add_influxdb)
 commands(add_sentry)
 commands(nginx_reload)
 commands(nginx_clean)
-
+commands(set_upstreams)
+commands(remove_upstreams)
 
 def main():
     logging.basicConfig(level=logging.INFO)
