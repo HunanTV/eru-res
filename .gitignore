@@ -1,2 +1,2 @@
 *.py[cod]
-resource.egg-info/*
+res.egg-info/*
