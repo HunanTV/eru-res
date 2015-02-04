@@ -4,7 +4,7 @@ import os
 from setuptools import setup, find_packages
 
 # package meta info
-NAME = "resource"
+NAME = "res"
 VERSION = "0.0.1"
 DESCRIPTION = "NBE resource tool"
 AUTHOR = "CMGS"
