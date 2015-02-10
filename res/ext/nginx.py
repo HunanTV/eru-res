@@ -3,8 +3,8 @@
 import logging
 import requests
 
-from utils.helper import scp_file
-from ext.common import random_string
+from res.utils.helper import scp_file
+from res.ext.common import random_string
 
 
 logger = logging.getLogger(__name__)

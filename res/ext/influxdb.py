@@ -3,7 +3,7 @@
 
 import logging
 
-from ext.common import random_string
+from res.ext.common import random_string
 
 logger = logging.getLogger(__name__)
 

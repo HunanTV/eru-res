@@ -14,7 +14,7 @@ URL = "http://git.hunantv.com"
 KEYWORDS = "influxdb mysql"
 
 ENTRY_POINTS = {
-    'console_scripts':['res=res.console:main',]
+    'console_scripts':['res=res.cmdline.console:main',]
 }
 
 INSTALL_REQUIRES = [

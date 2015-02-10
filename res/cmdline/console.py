@@ -6,11 +6,11 @@ import os
 import click
 import logging
 
-from ext.common import load_etcd_config, get_root_config
+from res.ext.common import load_etcd_config, get_root_config
 
-from resource.influxdb import add_influxdb
-from resource.sentry import add_sentry
-from resource.nginx import nginx_reload, nginx_clean, \
+from res.cmdline.influxdb import add_influxdb
+from res.cmdline.sentry import add_sentry
+from res.cmdline.nginx import nginx_reload, nginx_clean, \
         set_upstreams, remove_upstreams
 
 logger = logging.getLogger(__name__)

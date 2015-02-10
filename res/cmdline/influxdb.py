@@ -4,8 +4,8 @@ import click
 import logging
 import yaml
 
-from ext.common import get_etcd_client, get_influxdb_client, save, APP_CONFIG_PATH_FORMATTER
-from ext.influxdb import create_influxdb
+from res.ext.common import get_etcd_client, get_influxdb_client, save, APP_CONFIG_PATH_FORMATTER
+from res.ext.influxdb import create_influxdb
 
 
 logger = logging.getLogger(__name__)
