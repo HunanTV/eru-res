@@ -47,7 +47,7 @@ def get_root_config(path, etcd_config):
     return yaml.load(etcd_client.read(path).value)
 
 
-def random_password(l):
+def random_string(l):
     random.seed(time.time())
     return ''.join(random.sample(LETTERS, l))
 
