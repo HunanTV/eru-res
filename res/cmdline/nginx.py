@@ -3,8 +3,8 @@
 import os
 import click
 
-from utils.helper import get_ssh
-from ext.nginx import reload_nginx, clean_nginx, \
+from res.utils.helper import get_ssh
+from res.ext.nginx import reload_nginx, clean_nginx, \
         update_upstream, delete_upstream
 
 

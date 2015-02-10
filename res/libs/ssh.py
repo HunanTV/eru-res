@@ -5,7 +5,7 @@ import select
 import logging
 import paramiko
 
-from utils.helper import shell_escape, output_logs
+from res.utils.helper import shell_escape, output_logs
 
 
 logger = logging.getLogger(__name__)

@@ -4,8 +4,8 @@ import click
 import logging
 import yaml
 
-from ext.common import save, get_etcd_client, APP_CONFIG_PATH_FORMATTER
-from ext.sentry import create_sentry
+from res.ext.common import save, get_etcd_client, APP_CONFIG_PATH_FORMATTER
+from res.ext.sentry import create_sentry
 
 logger = logging.getLogger(__name__)
 
