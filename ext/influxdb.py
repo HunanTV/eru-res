@@ -3,7 +3,7 @@
 
 import logging
 
-from ext.common import random_password
+from ext.common import random_string
 
 logger = logging.getLogger(__name__)
 
@@ -11,7 +11,7 @@ def create_influxdb(client, dbname, username, pass_len, admin=False):
     if not client.create_database(dbname):
         logger.info('create influxdb database error')
         return
-    password = random_password(pass_len)
+    password = random_string(pass_len)
     client.switch_db(dbname)
     if not client.add_database_user(username, password):
         logger.info('create influxdb user error')
