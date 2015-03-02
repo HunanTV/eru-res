@@ -12,7 +12,7 @@ def create_influxdb(client, dbname, username, pass_len, admin=False):
         logger.info('create influxdb database error')
         return
     password = random_string(pass_len)
-    client.switch_db(dbname)
+    client.switch_database(dbname)
     if not client.add_database_user(username, password):
         logger.info('create influxdb user error')
         return
