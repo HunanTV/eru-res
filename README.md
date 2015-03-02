@@ -1,7 +1,7 @@
 Resource
 ==========
 
-### Nbe resource tool
+### Eru resource tool
 
 ### Usage:
 
