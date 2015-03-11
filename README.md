@@ -1,4 +1,4 @@
-Resource
+Eru Resource
 ==========
 
 ### Eru resource tool
